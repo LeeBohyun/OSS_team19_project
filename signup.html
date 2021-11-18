@@ -59,7 +59,7 @@
             </div>
           </nav>
 
-          <content id = "ID" class="container">
+          <content id = "SignUp" class="container">
               <h2>Sign Up</h2>
               <div class="mb-3 row">
                 <label for="inputID" class="col-sm-2 col-form-label">ID</label>
@@ -87,7 +87,7 @@
               </div>
               
               <div class="mb-3 row col-sm-5">
-                <button id ="signup" type="submit" class="btn btn-primary mb-3">Sign Up</button>
+                <button id ="signupbtn" type="submit" class="btn btn-primary mb-3">Sign Up</button>
               </div>
           </content>
 
@@ -99,7 +99,7 @@
         ></script>
 
         <script>
-            let button = document.querySelector("#signup");
+            let button = document.querySelector("#signupbtn");
 
             button.addEventListener("click", ()=>{
                 let id_element = document.querySelector("#inputID");
