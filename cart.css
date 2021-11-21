@@ -1,0 +1,18 @@
+table#stocktable{
+  width: 700px;
+  margin: 0px auto;
+  vertical-align: middle;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 0;
+}
+
+th{
+    width: auto;
+}
+
+tbody td{
+    padding: 5px !important;
+}

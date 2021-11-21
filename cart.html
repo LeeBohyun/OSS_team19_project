@@ -17,11 +17,11 @@
             href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css"
         />
         <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="cart.css">
 
         <title></title>
     </head>
     <body>
-        
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
               <a class="navbar-brand" href="./index.html">Stock trading AI bot</a>
@@ -54,10 +54,48 @@
                     </ul>
                     </li>
                 </ul>
-
               </div>
             </div>
           </nav>
+        
+        <div id="content">
+            <table id="stocktable" class="table table-bordered border border-dark">
+                <thead>
+                  <tr class="table-dark">
+                    <th>
+                        Stock
+                        <button id="sortname" class="btn-dark">
+                            <i class="bi bi-arrow-down-up"></i>
+                        </button>
+                    </th>
+                    <th>
+                        Current Price(\)
+                        <button id="sortname" class="btn-dark">
+                            <i class="bi bi-arrow-down-up"></i>
+                        </button>
+                    </th>
+                    <th>
+                        Success Rate(%)
+                        <button id="sortname" class="btn-dark">
+                            <i class="bi bi-arrow-down-up"></i>
+                        </button>
+                    </th>
+                    <th>
+                        Purchase
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr id="stock_info">
+                    <td id="name">1</td>
+                    <td id="price">Mark</td>
+                    <td id="possibility">Otto</td>
+                    <td><button type="button" class="btn btn-secondary rounded-0">Purchase</button></td>
+                  </tr>
+                </tbody>
+            </table>
+        </div>
+
         <!-- Option 1: Bootstrap Bundle with Popper -->
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
