@@ -64,19 +64,16 @@
                   <tr class="table-dark">
                     <th>
                         Stock
-                        <button id="sortname" class="btn-dark">
-                            <i class="bi bi-arrow-down-up"></i>
-                        </button>
                     </th>
                     <th>
                         Current Price(\)
-                        <button id="sortname" class="btn-dark">
+                        <button id="sortprice" class="btn-dark" onclick='sortTable("price")'>
                             <i class="bi bi-arrow-down-up"></i>
                         </button>
                     </th>
                     <th>
                         Success Rate(%)
-                        <button id="sortname" class="btn-dark">
+                        <button id="sortrate" class="btn-dark" onclick='sortTable("pb")'>
                             <i class="bi bi-arrow-down-up"></i>
                         </button>
                     </th>
@@ -85,13 +82,7 @@
                     </th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr id="stock_info">
-                    <td id="name">1</td>
-                    <td id="price">Mark</td>
-                    <td id="possibility">Otto</td>
-                    <td><button type="button" class="btn btn-secondary rounded-0">Purchase</button></td>
-                  </tr>
+                <tbody id="tablebody">
                 </tbody>
             </table>
         </div>
@@ -102,5 +93,108 @@
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
             crossorigin="anonymous"
         ></script>
+
+        <script>
+            //false == desc true == asc
+            let sort_info={
+                "name": [0, false],
+                "price":[1, false],
+                "pb" : [2, false],
+            }
+            function addStock(name, price, possibility){
+                let tr = document.createElement("tr");
+                tr.id = "stock_info";
+
+                let name_td = document.createElement("td");
+                let price_td = document.createElement("td");
+                let pb_td = document.createElement("td");
+                let purchase_td = document.createElement("td");
+                
+                name_td.id = "name";
+                price_td.id="price";
+                pb_td.id = "possibility";
+                    
+                name_td.textContent = name;
+                price_td.textContent = price;
+                pb_td.textContent = possibility;
+
+                let purchase_btn = document.createElement("button"); 
+                purchase_btn.type = "button";
+                purchase_btn.className = "btn btn-secondary rounded-0";
+                purchase_btn.textContent = "Purchase";
+                
+                purchase_td.appendChild(purchase_btn);
+
+                tr.appendChild(name_td);
+                tr.appendChild(price_td);
+                tr.appendChild(pb_td);
+                tr.appendChild(purchase_td);
+
+                //purchase 버튼 클릭했을 때 작동
+                purchase_btn.addEventListener("click", () => {
+                    tr.remove();
+                });
+
+                let tablebody =  document.querySelector("#tablebody");
+                tablebody.appendChild(tr);
+            }
+            
+            //테스트
+            window.addEventListener("load", ()=>{
+                addStock("삼성전자", "90000", "199");
+                addStock("카카오", "10000", "90");
+                addStock("네이버", "70009", "5555");
+                sortTable("price");
+		    });
+
+            function sortTable(target)
+            {
+                const t = sort_info[target];
+                const idx = t[0];
+                const state = t[1];
+
+                sort_info[target] = [idx, !state];
+
+                table = document.querySelector("#tablebody");
+                let rows = table.rows;
+
+                let values = [];
+
+                let switching = true, x, y;
+                while(switching)
+                {
+                    switching = false;
+                    rows = table.rows;
+                    for (i = 0; i < (rows.length-1); i++) {
+                        shouldSwitch = false;
+                        x = rows[i].getElementsByTagName("TD")[idx];
+                        y = rows[i + 1].getElementsByTagName("TD")[idx];
+                        
+                        if(state)
+                        {
+                            if (parseInt(x.textContent) > parseInt(y.textContent)) {
+                                console.log(x.textContent, y.textContent);
+                                shouldSwitch = true;
+                                break;
+                            }
+                        }
+                        else
+                        {
+                            if (parseInt(x.textContent) < parseInt(y.textContent)) {
+                                shouldSwitch = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    if (shouldSwitch) {
+                        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                        switching = true;
+                    }
+                }
+            }
+
+            
+        </script>
     </body>
 </html>
