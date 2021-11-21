@@ -1,0 +1,38 @@
+div#login {
+    vertical-align: middle;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+div#idbox {
+    display: flex;
+    justify-content: center;
+}
+
+div#pwbox {
+    display: flex;
+    justify-content: center;
+}
+
+div#loginbtn {
+    display: flex;
+    justify-content: center;
+}
+
+div#signup {
+    display: flex;
+    justify-content: center;
+}
+
+div#signup a {
+    margin-bottom: 20px;
+}

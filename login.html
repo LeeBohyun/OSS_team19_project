@@ -11,72 +11,139 @@
             rel="stylesheet"
             integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
             crossorigin="anonymous"
-        />      
+        />
         <link
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css"
         />
-        <link rel="stylesheet" href="main.css">
-
+        <link rel="stylesheet" href="main.css" />
+        <link rel="stylesheet" href="login.css" />
         <title></title>
     </head>
     <body>
-        
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-              <a class="navbar-brand" href="./index.html">Stock trading AI bot</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto">
-                  <li class="nav-item">
-                    <a class="nav-link active " href="#">Support</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active " href="#">Media</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active" href="#">News</a>
-                  </li>
-                </ul>
-
-                <ul class="navbar-nav mr-auto " >
-                    <li class="nav-item dropdown">
-                    <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
-                        Menu
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown" id = "menu">
-                    <li><a class="dropdown-item" href="./cart.html">Cart</a></li>
-                    <li><a class="dropdown-item" href="./mypage.html">Mypage</a></li>
-                    <li><a class="dropdown-item" href="./login.html">Login</a></li>
-                    <li><a class="dropdown-item" href="./settings.html">Settings</a></li>
+                <a class="navbar-brand" href="./index.html"
+                    >Stock trading AI bot</a
+                >
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div
+                    class="collapse navbar-collapse"
+                    id="navbarSupportedContent"
+                >
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Support</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Media</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">News</a>
+                        </li>
                     </ul>
-                    </li>
-                </ul>
 
-              </div>
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item dropdown">
+                            <a
+                                class="nav-link active dropdown-toggle"
+                                href="#"
+                                id="navbarDropdown"
+                                role="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                            >
+                                Menu
+                            </a>
+                            <ul
+                                class="dropdown-menu"
+                                aria-labelledby="navbarDropdown"
+                                id="menu"
+                            >
+                                <li>
+                                    <a class="dropdown-item" href="./cart.html"
+                                        >Cart</a
+                                    >
+                                </li>
+                                <li>
+                                    <a
+                                        class="dropdown-item"
+                                        href="./mypage.html"
+                                        >Mypage</a
+                                    >
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="./login.html"
+                                        >Login</a
+                                    >
+                                </li>
+                                <li>
+                                    <a
+                                        class="dropdown-item"
+                                        href="./settings.html"
+                                        >Settings</a
+                                    >
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
-          </nav>
+        </nav>
 
-          <content id = "login" class="container">
+        <div id="login">
             <h2>LOGIN</h2>
-                <div class="mb-3 row">
-                    <label for="inputID" class="col-sm-2 col-form-label">ID</label>
-                    <div class="col-sm-10">
-                    <input type="ID" class="form-control" id="inputID" placeholder="input ID">
+            <div id="login_box">
+                <div id="idbox" class="mb-3 row">
+                    <label for="inputID" class="col-sm-2 col-form-label"
+                        >ID</label
+                    >
+                    <div class="col-sm-3">
+                        <input
+                            type="ID"
+                            class="form-control"
+                            id="inputID"
+                            placeholder="input ID"
+                        />
                     </div>
                 </div>
-                <div class="mb-3 row">
-                    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-                    <div class="col-sm-10">
-                    <input type="password" class="form-control" id="inputPassword" placeholder="input password">
+                <div id="pwbox" class="mb-3 row">
+                    <label for="inputPassword" class="col-sm-2 col-form-label"
+                        >Password</label
+                    >
+                    <div class="col-sm-3">
+                        <input
+                            type="password"
+                            class="form-control"
+                            id="inputPassword"
+                            placeholder="input password"
+                        />
                     </div>
                 </div>
-                <div class="mb-3 row col-sm-5">
-                    <button id ="loginbtn" type="submit" class="btn btn-primary mb-3">LOGIN</button>
-            </content>
-        <!-- Option 1: Bootstrap Bundle with Popper -->
+                <div id="loginbtn" class="mb-3 row">
+                    <button type="submit" class="btn btn-primary col-sm-2">
+                        LOGIN
+                    </button>
+                </div>
+
+                <div id="signup" class="mb-3 row">
+                    <a href="signup.html" class="link-dark"
+                        ><span>click <b>here</b> to create an account</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        `
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
@@ -85,17 +152,15 @@
         <script>
             let button = document.querySelector("#loginbtn");
 
-            button.addEventListener("click", ()=>{
+            button.addEventListener("click", () => {
                 let id_element = document.querySelector("#inputID");
                 let password_element = document.querySelector("#inputPassword");
-                
+
                 const id = id_element.value;
                 const password = password_element.value;
 
-                if(!id.length || !password.length ) 
-                    console.log("err");
-                else
-                    console.log(id, password)
+                if (!id.length || !password.length) console.log("err");
+                else console.log(id, password);
             });
         </script>
     </body>
