@@ -5,9 +5,30 @@ nav div a.navbar-brand {
     margin-right: 10%;
 }
 
+div.wrapper {
+    vertical-align: middle;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
 .navbar-expand-lg .navbar-nav .nav-link {
     padding-left: 30px;
     padding-right: 30px;
+}
+
+h2 {
+    text-align: center;
+    padding-bottom: 20px;
+    margin-bottom: 0px;
+}
+
+div.box {
+    display: flex;
+    justify-content: center;
 }
 
 nav li {

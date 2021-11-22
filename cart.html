@@ -102,35 +102,40 @@
             </div>
         </nav>
 
-        <table id="stocktable" class="table table-bordered border border-dark">
-            <thead>
-                <tr class="table-dark">
-                    <th>Stock</th>
-                    <th>
-                        Current Price(\)
-                        <button
-                            id="sortprice"
-                            class="btn-dark"
-                            onclick='sortTable("price")'
-                        >
-                            <i class="bi bi-arrow-down-up"></i>
-                        </button>
-                    </th>
-                    <th>
-                        Success Rate(%)
-                        <button
-                            id="sortrate"
-                            class="btn-dark"
-                            onclick='sortTable("pb")'
-                        >
-                            <i class="bi bi-arrow-down-up"></i>
-                        </button>
-                    </th>
-                    <th>Purchase</th>
-                </tr>
-            </thead>
-            <tbody id="tablebody"></tbody>
-        </table>
+        <div class="wrapper">
+            <table
+                id="stocktable"
+                class="table table-bordered border border-dark"
+            >
+                <thead>
+                    <tr class="table-dark">
+                        <th>Stock</th>
+                        <th>
+                            Current Price(\)
+                            <button
+                                id="sortprice"
+                                class="btn-dark"
+                                onclick='sortTable("price")'
+                            >
+                                <i class="bi bi-arrow-down-up"></i>
+                            </button>
+                        </th>
+                        <th>
+                            Success Rate(%)
+                            <button
+                                id="sortrate"
+                                class="btn-dark"
+                                onclick='sortTable("pb")'
+                            >
+                                <i class="bi bi-arrow-down-up"></i>
+                            </button>
+                        </th>
+                        <th>Purchase</th>
+                    </tr>
+                </thead>
+                <tbody id="tablebody"></tbody>
+            </table>
+        </div>
 
         <!-- Option 1: Bootstrap Bundle with Popper -->
         <script
@@ -148,16 +153,16 @@
             };
             function addStock(name, price, possibility) {
                 let tr = document.createElement("tr");
-                tr.id = "stock_info";
+                tr.className = "stock_info";
 
                 let name_td = document.createElement("td");
                 let price_td = document.createElement("td");
                 let pb_td = document.createElement("td");
                 let purchase_td = document.createElement("td");
 
-                name_td.id = "name";
-                price_td.id = "price";
-                pb_td.id = "possibility";
+                name_td.className = "name";
+                price_td.className = "price";
+                pb_td.className = "possibility";
 
                 name_td.textContent = name;
                 price_td.textContent = price;

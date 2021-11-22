@@ -17,7 +17,6 @@
             href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css"
         />
         <link rel="stylesheet" href="main.css" />
-        <link rel="stylesheet" href="login.css" />
         <title></title>
     </head>
     <body>
@@ -101,10 +100,10 @@
             </div>
         </nav>
 
-        <div id="login">
+        <div id="loginborder" class="wrapper">
             <h2>LOGIN</h2>
             <div id="login_box">
-                <div id="idbox" class="mb-3 row">
+                <div class="box mb-3 row">
                     <label for="inputID" class="col-sm-2 col-form-label"
                         >ID</label
                     >
@@ -117,7 +116,7 @@
                         />
                     </div>
                 </div>
-                <div id="pwbox" class="mb-3 row">
+                <div class="box mb-3 row">
                     <label for="inputPassword" class="col-sm-2 col-form-label"
                         >Password</label
                     >
@@ -130,14 +129,18 @@
                         />
                     </div>
                 </div>
-                <div id="loginbtn" class="mb-3 row">
-                    <button type="submit" class="btn btn-primary col-sm-2">
+                <div class="box mb-3 row">
+                    <button
+                        id="loginbtn"
+                        type="submit"
+                        class="btn btn-primary col-sm-2"
+                    >
                         LOGIN
                     </button>
                 </div>
 
-                <div id="signup" class="mb-3 row">
-                    <a href="signup.html" class="link-dark"
+                <div class="box mb-3 row pb-3">
+                    <a id="signuplink" href="signup.html" class="link-dark"
                         ><span>click <b>here</b> to create an account</span>
                     </a>
                 </div>
