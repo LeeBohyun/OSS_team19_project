@@ -12,3 +12,8 @@ table#stocktable {
 tbody td {
     padding: 5px !important;
 }
+
+thead th button {
+    border: 0;
+    outline: 0;
+}

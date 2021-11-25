@@ -1,0 +1,29 @@
+.companyinfo {
+    text-align: left;
+    padding-top: 10px;
+    padding-left: 5px;
+}
+
+#stockid {
+    text-align: center;
+    padding-left: 10px;
+    font-weight: bold;
+}
+table {
+    table-layout: fixed;
+}
+
+table td {
+    margin-bottom: 0px;
+    font-size: 15px;
+    text-align: left;
+    width: 33%;
+}
+
+table .tabletxt {
+    margin-right: 15px;
+}
+
+#stockprice {
+    font-size: 20px;
+}
