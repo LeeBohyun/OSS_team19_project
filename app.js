@@ -36,10 +36,10 @@ app.use(
 
 var router = express.Router();
 
-router.route("/process/cart").get(function (req, res) {
-    console.log("route /process/cart");
-    if (req.session.isLogined) {
-        res.redirect("/public/cart.html");
+router.route("/process/mypage").get(function (req, res) {
+    console.log("route /process/mypage");
+    if (req.session.user) {
+        res.redirect("/public/mypage.html");
     } else {
         res.redirect("/public/login.html");
     }
@@ -73,9 +73,11 @@ router.route("/process/signup").post(function (req, res) {
             function (err, addedUser) {
                 if (err) {
                     console.error("Error - addUser : " + err.stack);
-                    res.write("<script>alert('Error!')</script>");
                     res.write(
-                        '<script>window.location="/public/signup.html"</script>'
+                        "<script>alert('Error! ID already exists')</script>"
+                    );
+                    res.write(
+                        '<script>window.location="/public/login.html"</script>'
                     );
                     res.end();
                     return;
@@ -129,13 +131,15 @@ router.route("/process/login").post(function (req, res) {
             }
             if (rows) {
                 console.dir(rows);
-                var username = rows[0].name;
-                req.session.uid = rows[0].id;
-                req.session.upw = rows[0].password;
-                req.session.isLogined = true;
-                req.session.save(function () {
-                    res.json({ result: "ok" });
-                });
+                console.log(
+                    "id : " + rows[0].id + "    name : " + rows[0].name
+                );
+                req.session.user = {
+                    id: rows[0].id,
+                    name: rows[0].name,
+                    authorized: true,
+                };
+                res.redirect("/public/mypage.html");
                 return;
             } else {
                 res.write("<script>alert('Fail to login.')</script>");
@@ -150,6 +154,19 @@ router.route("/process/login").post(function (req, res) {
         res.write("<script>alert('Fail to connect DB')</script>");
         res.write('<script>window.location="/public/signup.html"</script>');
         res.end();
+    }
+});
+router.route("/process/logout").get(function (req, res) {
+    if (req.session.user) {
+        console.log("logout");
+        req.session.destroy(function (err) {
+            if (err) throw err;
+            console.log("destroy session and logout");
+            res.redirect("/public/index.html");
+        });
+    } else {
+        console.log("Not login user");
+        res.redirect("/public/index.html");
     }
 });
 app.use("/", router);

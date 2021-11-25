@@ -23,7 +23,7 @@
     <body>
         <header class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="./index.html"
+                <a class="navbar-brand" href="/process/logout"
                     >Stock trading AI bot</a
                 >
                 <button
@@ -43,13 +43,19 @@
                 >
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">Support</a>
+                            <a class="nav-link active" href="/process/logout"
+                                >Support</a
+                            >
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">Media</a>
+                            <a class="nav-link active" href="/process/logout"
+                                >Media</a
+                            >
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">News</a>
+                            <a class="nav-link active" href="/process/logout"
+                                >News</a
+                            >
                         </li>
                     </ul>
 
@@ -70,6 +76,14 @@
                                 aria-labelledby="navbarDropdown"
                                 id="menu"
                             >
+                                <li>
+                                    <a
+                                        class="dropdown-item"
+                                        href="/process/logout"
+                                        >Logout</a
+                                    >
+                                </li>
+                                <!--
                                 <li>
                                     <a class="dropdown-item" href="./cart.html"
                                         >Cart</a
@@ -94,13 +108,14 @@
                                         >Settings</a
                                     >
                                 </li>
+                                -->
                             </ul>
                         </li>
                     </ul>
                 </div>
             </div>
         </header>
-
+        <!--
         <nav id="searchbar">
             <form
                 id="searchform"
@@ -127,6 +142,21 @@
                 </button>
             </form>
         </nav>
+    -->
+        <div class="wrapper">
+            <h1>My Page</h1>
+            <form id="logout_box" action="/process/logout">
+                <div class="box mb-3 row">
+                    <button
+                        id="submitbtn"
+                        type="submit"
+                        class="btn btn-primary col-sm-2"
+                    >
+                        Logout
+                    </button>
+                </div>
+            </form>
+        </div>
         <!-- Option 1: Bootstrap Bundle with Popper -->
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
