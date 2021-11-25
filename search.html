@@ -118,44 +118,82 @@
                 action="./search.html"
             >
                 <input
-                    type="text"
+                    type="search"
                     id="searchinput"
                     class="form-control rounded-5 me-3"
                     placeholder="Search"
                 />
-                <button id="searchbtn">
+                <button id="searchbtn" type="submit">
                     <i class="bi bi-search" style="font-size: 32px"></i>
                 </button>
             </form>
         </nav>
 
         <div class="wrapper">
-            <div class="stockinfo d-flex border-bottom border-dark pb-2">
-                <h3 id="stockname" class="mb-0">종목명</h3>
-                <span id="stockid" class="mt-1">11111</span>
-                <button
-                    type="submit"
-                    id="addcart"
-                    class="btn btn-dark ms-auto btn-sm"
-                >
-                    + cart
-                </button>
-            </div>
-            <div class="d-flex py-0 border-bottom border-dark pb-0">
-                <span id="stockprice" class="align-self-center me-3 ms-3 my-2 pe-5 "
-                    >80000</span
-                >
-                <table class="table table-borderless mb-0">
-                    <tr class="border-start border-dark">
-                        <td><span class="tabletxt">전일가</span><span id="today">12300</span></td>
-                        <td><span class="tabletxt">고가</span><span id="high">12300</span></td>
-                        <td><span class="tabletxt">거래량</span><span id="volume">120</span></td>
-                    </tr>
-                    <tr class="border-start border-dark">
-                        <td><span class="tabletxt">시가</span><span id="open">123</span></td>
-                        <td><span class="tabletxt">저가</span><span id="low">123</span></td>
-                        <td><span class="tabletxt">거래대금</span><span id="amount">123</span></td>
-                    </tr>
+            <div class="stockinfo mx-auto">
+                <div class="d-flex border-bottom border-dark pb-2">
+                    <h3 id="stockname" class="mb-0">종목명</h3>
+                    <span id="stockid" class="mt-1">11111</span>
+                    <span class="mt-1 ms-auto" style="color: crimson"
+                        >Accuracy :
+                    </span>
+                    <span
+                        id="stockAccuracy"
+                        class="mt-1 ms-3"
+                        style="color: crimson"
+                        >70
+                    </span>
+                    <button
+                        type="submit"
+                        id="addcart"
+                        class="btn btn-dark ms-5 btn-sm"
+                    >
+                        + cart
+                    </button>
+                </div>
+                <div class="d-flex py-0 border-bottom border-dark pb-0">
+                    <div class="d-flex flex-column">
+                        <span
+                            id="stockprice"
+                            class="align-self-center me-3 ms-3 mt-2 pe-5"
+                            >80000</span
+                        >
+                        <div class="compare ms-3">
+                            <span id="comparePrice">+ 3500</span>
+                            <span id="fluctuation">( 2.81 )</span>
+                        </div>
+                    </div>
+
+                    <table id="infotable" class="table table-borderless mb-0">
+                        <tr class="border-start border-dark">
+                            <td>
+                                <span class="tabletxt">전일가</span
+                                ><span id="today">12300</span>
+                            </td>
+                            <td>
+                                <span class="tabletxt">고가</span
+                                ><span id="high">12300</span>
+                            </td>
+                            <td>
+                                <span class="tabletxt">거래량</span
+                                ><span id="volume">120</span>
+                            </td>
+                        </tr>
+                        <tr class="border-start border-dark">
+                            <td>
+                                <span class="tabletxt">시가</span
+                                ><span id="open">123</span>
+                            </td>
+                            <td>
+                                <span class="tabletxt">저가</span
+                                ><span id="low">123</span>
+                            </td>
+                            <td>
+                                <span class="tabletxt">거래대금</span
+                                ><span id="amount">123</span>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
@@ -167,5 +205,65 @@
             crossorigin="anonymous"
         ></script>
         <script src="search.js"></script>
+
+        <script>
+            window.addEventListener("load", () => {
+                let info = [
+                    false,
+                    "카카오",
+                    "035720",
+                    "70",
+                    "128000",
+                    "3500",
+                    "2.81",
+                    "124500",
+                    "128500",
+                    "2882968",
+                    "125000",
+                    "124500",
+                    "366216",
+                ];
+                setStockTable(info);
+            });
+            function setStockTable(info) {
+                let idx = 0;
+
+                const increase = info[idx++];
+                let stockname = document.querySelector("#stockname");
+                let stockid = document.querySelector("#stockid");
+                let stockAccuracy = document.querySelector("#stockAccuracy");
+                let stockprice = document.querySelector("#stockprice");
+                let comparePrice = document.querySelector("#comparePrice");
+                let fluctuation = document.querySelector("#fluctuation");
+
+                stockname.textContent = info[idx++];
+                stockid.textContent = info[idx++];
+                stockAccuracy.textContent = info[idx++];
+                stockprice.textContent = info[idx++];
+
+                if (increase) {
+                    comparePrice.textContent = "+ " + info[idx++];
+                } else {
+                    comparePrice.textContent = "- " + info[idx++];
+                }
+
+                fluctuation.textContent = "( " + info[idx++] + " )";
+
+                let c = increase ? "crimson" : "mediumblue";
+                stockprice.style.color = c;
+                comparePrice.style.color = c;
+                fluctuation.style.color = c;
+
+                let table = document.querySelector("#infotable");
+                let rows = table.rows;
+
+                for (let i = 0; i < 2; i++) {
+                    let span = rows[i].getElementsByTagName("span");
+                    for (let j = 0; j < 3; j++) {
+                        span[j * 2 + 1].textContent = info[idx++];
+                    }
+                }
+            }
+        </script>
     </body>
 </html>

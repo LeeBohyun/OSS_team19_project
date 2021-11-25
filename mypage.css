@@ -1,4 +1,7 @@
-table#stocktable {
+table.accuracytable {
+    width: 720px;
+}
+table.mystocktable {
     width: 720px;
     margin: 0px auto;
     vertical-align: middle;
@@ -9,17 +12,8 @@ table#stocktable {
     padding: 0;
 }
 
-#stocktable .sort {
+.mystocktable .sort {
     border: 0;
     outline: 0;
     background-color: rgba(255, 255, 255, 0);
-}
-
-tbody td {
-    padding: 5px !important;
-}
-
-thead th button {
-    border: 0;
-    outline: 0;
 }

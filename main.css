@@ -80,6 +80,7 @@ h2 {
 
 div.box {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
 

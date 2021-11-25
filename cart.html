@@ -123,7 +123,7 @@
                     class="form-control rounded-5 me-3"
                     placeholder="Search"
                 />
-                <button id="searchbtn">
+                <button id="searchbtn" type="submit">
                     <i class="bi bi-search" style="font-size: 32px"></i>
                 </button>
             </form>
@@ -140,8 +140,7 @@
                         <th>
                             Current Price(\)
                             <button
-                                id="sortprice"
-                                class="btn-dark"
+                                class="sort btn-dark"
                                 onclick='sortTable("price")'
                             >
                                 <i class="bi bi-arrow-down-up"></i>
@@ -150,8 +149,7 @@
                         <th>
                             Success Rate(%)
                             <button
-                                id="sortrate"
-                                class="btn-dark"
+                                class="sort btn-dark"
                                 onclick='sortTable("pb")'
                             >
                                 <i class="bi bi-arrow-down-up"></i>
@@ -171,6 +169,7 @@
             crossorigin="anonymous"
         ></script>
         <script src="search.js"></script>
+        <script src="./table.js"></script>
         <script>
             //false == desc true == asc
             let sort_info = {
@@ -178,9 +177,13 @@
                 price: [1, false],
                 pb: [2, false],
             };
-            function addStock(name, price, possibility) {
+            function addStock(id, name, price, possibility) {
                 let tr = document.createElement("tr");
                 tr.className = "stock_info";
+
+                let stock_id = document.createElement("p");
+                stock_id.className = "stockid";
+                stock_id.textContent = id;
 
                 let name_td = document.createElement("td");
                 let price_td = document.createElement("td");
@@ -196,8 +199,8 @@
                 pb_td.textContent = possibility;
 
                 let purchase_btn = document.createElement("button");
-                purchase_btn.type = "button";
-                purchase_btn.className = "btn btn-secondary rounded-0";
+                purchase_btn.type = "submit";
+                purchase_btn.className = "tablebtn btn btn-secondary rounded-0";
                 purchase_btn.textContent = "Purchase";
 
                 purchase_td.appendChild(purchase_btn);
@@ -206,10 +209,15 @@
                 tr.appendChild(price_td);
                 tr.appendChild(pb_td);
                 tr.appendChild(purchase_td);
-
                 //purchase 버튼 클릭했을 때 작동
                 purchase_btn.addEventListener("click", () => {
                     tr.remove();
+                    console.log(
+                        name_td.textContent,
+                        price_td.textContent,
+                        pb_td.textContent,
+                        stock_id.textContent
+                    );
                 });
 
                 let tablebody = document.querySelector("#tablebody");
@@ -218,61 +226,10 @@
 
             //테스트
             window.addEventListener("load", () => {
-                addStock("삼성전자", "90000", "199");
-                addStock("카카오", "10000", "90");
-                addStock("네이버", "70009", "5555");
-                sortTable("price");
+                addStock("11111", "삼성전자", "90000", "199");
+                addStock("22222", "카카오", "10000", "90");
+                addStock("33333", "네이버", "70009", "5555");
             });
-
-            function sortTable(target) {
-                const t = sort_info[target];
-                const idx = t[0];
-                const state = t[1];
-
-                sort_info[target] = [idx, !state];
-
-                table = document.querySelector("#tablebody");
-                let rows = table.rows;
-
-                let values = [];
-
-                let switching = true,
-                    x,
-                    y;
-                while (switching) {
-                    switching = false;
-                    rows = table.rows;
-                    for (i = 0; i < rows.length - 1; i++) {
-                        shouldSwitch = false;
-                        x = rows[i].getElementsByTagName("TD")[idx];
-                        y = rows[i + 1].getElementsByTagName("TD")[idx];
-
-                        if (state) {
-                            if (
-                                parseInt(x.textContent) >
-                                parseInt(y.textContent)
-                            ) {
-                                console.log(x.textContent, y.textContent);
-                                shouldSwitch = true;
-                                break;
-                            }
-                        } else {
-                            if (
-                                parseInt(x.textContent) <
-                                parseInt(y.textContent)
-                            ) {
-                                shouldSwitch = true;
-                                break;
-                            }
-                        }
-                    }
-
-                    if (shouldSwitch) {
-                        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-                        switching = true;
-                    }
-                }
-            }
         </script>
     </body>
 </html>

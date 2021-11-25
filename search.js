@@ -1,6 +1,4 @@
 document.getElementById("searchform").onsubmit = function () {
-    let button = document.querySelector("#searchbtn");
-
     let search_element = document.querySelector("#searchinput");
     const search_value = search_element.value;
 

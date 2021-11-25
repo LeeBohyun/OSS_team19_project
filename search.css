@@ -13,6 +13,10 @@ table {
     table-layout: fixed;
 }
 
+.stockinfo {
+    width: 720px;
+}
+
 table td {
     margin-bottom: 0px;
     font-size: 15px;
@@ -25,5 +29,11 @@ table .tabletxt {
 }
 
 #stockprice {
-    font-size: 20px;
+    font-size: 25px;
+}
+
+.compare {
+    text-align: left;
+    padding-left: 10px;
+    font-size: 15px;
 }
