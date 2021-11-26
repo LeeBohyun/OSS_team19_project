@@ -137,7 +137,7 @@
                     MY PAGE
                 </h1>
             </div>
-            <div class="box container-sm">
+            <div class="box">
                 <table
                     class="
                         accuracytable
@@ -152,37 +152,44 @@
                         <td id="accuray">70%</td>
                     </tr>
                 </table>
-
-                <table
-                    class="mystocktable table table-bordered border border-dark"
-                >
-                    <thead>
-                        <tr class="table-dark">
-                            <th>Stock</th>
-                            <th>
-                                Current Price(\)
-                                <button
-                                    class="sort btn-dark"
-                                    onclick='sortTable("price")'
-                                >
-                                    <i class="bi bi-arrow-down-up"></i>
-                                </button>
-                            </th>
-                            <th>
-                                Success Rate(%)
-                                <button
-                                    class="sort btn-dark"
-                                    onclick='sortTable("pb")'
-                                >
-                                    <i class="bi bi-arrow-down-up"></i>
-                                </button>
-                            </th>
-                            <th>Sell</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tablebody"></tbody>
-                </table>
             </div>
+            <div class="mb-3">
+                <button
+                    id="loadbutton"
+                    type="button"
+                    class="btn btn-secondary rounded-0"
+                >
+                    Load Current State
+                </button>
+            </div>
+
+            <table class="mystocktable table table-bordered border border-dark">
+                <thead>
+                    <tr class="table-dark">
+                        <th>Stock</th>
+                        <th>
+                            Current Price(\)
+                            <button
+                                class="sort btn-dark"
+                                onclick='sortTable("price")'
+                            >
+                                <i class="bi bi-arrow-down-up"></i>
+                            </button>
+                        </th>
+                        <th>
+                            Success Rate(%)
+                            <button
+                                class="sort btn-dark"
+                                onclick='sortTable("pb")'
+                            >
+                                <i class="bi bi-arrow-down-up"></i>
+                            </button>
+                        </th>
+                        <th>Sell</th>
+                    </tr>
+                </thead>
+                <tbody id="tablebody"></tbody>
+            </table>
         </div>
 
         <!-- Option 1: Bootstrap Bundle with Popper -->
