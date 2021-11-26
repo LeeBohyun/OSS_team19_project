@@ -1,0 +1,100 @@
+header div a.navbar-brand {
+    font-weight: bold;
+    font-size: 23px;
+    margin-left: 60px;
+    margin-right: 10%;
+}
+.navbar {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+}
+
+body {
+    background-color: #f9f9f9;
+}
+header.navbar {
+    background-color: #000;
+}
+
+div.wrapper {
+    vertical-align: middle;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#searchbar {
+    background: rgb(255, 255, 255);
+}
+a.dropdown-item {
+    text-align: center;
+}
+
+.dropdown-menu[data-bs-popper] {
+    top: 100%;
+    left: 0;
+    margin-top: 0.5rem;
+}
+
+a.dropdown-item {
+    text-align: center;
+}
+
+.dropdown-menu {
+    position: absolute;
+    z-index: 1000;
+    display: none;
+    min-width: 8rem;
+    padding: 0.5rem 0;
+    margin: 0;
+    font-size: 1rem;
+    color: #212529;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0rem;
+}
+
+#searchform button {
+    border: 0;
+    outline: 0;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+#searchform input {
+    height: 40px;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.navbar-expand-lg .navbar-nav .nav-link {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+h2 {
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 0px;
+}
+
+div.box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+header li {
+    font-size: 0.9em;
+}
