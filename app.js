@@ -12,8 +12,8 @@ var mysql = require("mysql");
 
 var pool = mysql.createPool({
     connectionLimit: 10,
-    host: "localhost",
-    user: "root",
+    host: "192.168.0.23",
+    user: "user",
     password: "password123",
     database: "stockbot",
     debug: false,
