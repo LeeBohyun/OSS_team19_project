@@ -14,6 +14,13 @@ header div a.navbar-brand {
     padding-bottom: 0.3rem;
 }
 
+body {
+    background-color: #f9f9f9;
+}
+header.navbar {
+    background-color: #000;
+}
+
 div.wrapper {
     vertical-align: middle;
     text-align: center;
@@ -22,6 +29,10 @@ div.wrapper {
     margin-bottom: 20px;
     margin-left: 10%;
     margin-right: 10%;
+}
+
+#searchbar {
+    background: rgb(255, 255, 255);
 }
 a.dropdown-item {
     text-align: center;
