@@ -226,7 +226,6 @@
                 purchase_btn.addEventListener("click", () => {
                     alert("Stock Successfully Purchased!");
                     let str = name_td.textContent.concat(":", price_td.textContent, ":", pb_td.textContent);
-                    alert(id);
                     window.localStorage.setItem(id, str);
 
                 });

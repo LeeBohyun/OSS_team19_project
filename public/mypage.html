@@ -269,12 +269,10 @@
                 if(window.localStorage.length==0){
                     return;
                 }else{
-                    alert(window.localStorage.length);
                     for (var k=0; k<15; k++){                       
                         var str =window.localStorage.getItem(k);
                         if(str!=null){                          
                             str = str.split(':');
-                            alert(str);
                             addStock(k, str[0], str[1], str[2]);
                         }else{
                             continue;
@@ -295,7 +293,6 @@
                 var total = Number(allText[0])+Number(allText[1]);
                 var success = Number((allText[0]));
                 var success_rate = success/total;
-                alert(success_rate);
                 document.getElementById('accuracy_result').innerHTML=success_rate_0.13;
             }
             txtFile.open("GET", 'model_accuracy.txt', true);
