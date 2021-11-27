@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
     <head>
         <!-- Required meta tags -->
         <meta charset="utf-8" />
@@ -137,6 +137,7 @@
                     id="loadbutton"
                     type="button"
                     class="btn btn-secondary rounded-0"
+                    onclick="load_stock_info();"
                 >
                     Load Current State
                 </button>
@@ -213,6 +214,7 @@
                 purchase_btn.type = "submit";
                 purchase_btn.className = "tablebtn btn btn-secondary rounded-0";
                 purchase_btn.textContent = "Purchase";
+                purchase_btn.id="purchase_btn";
 
                 purchase_td.appendChild(purchase_btn);
 
@@ -222,24 +224,39 @@
                 tr.appendChild(purchase_td);
                 //purchase 버튼 클릭했을 때 작동
                 purchase_btn.addEventListener("click", () => {
-                    console.log(
-                        name_td.textContent,
-                        price_td.textContent,
-                        pb_td.textContent,
-                        stock_id.textContent
-                    );
+                    alert("Stock Successfully Purchased!");
+                    let str = name_td.textContent.concat(":", price_td.textContent, ":", pb_td.textContent);
+                    alert(id);
+                    window.localStorage.setItem(id, str);
+
                 });
 
                 let tablebody = document.querySelector("#tablebody");
                 tablebody.appendChild(tr);
             }
 
-            //테스트
-            window.addEventListener("load", () => {
-                addStock("11111", "삼성전자", "90000", "199");
-                addStock("22222", "카카오", "10000", "90");
-                addStock("33333", "네이버", "70009", "5555");
-            });
+            function load_stock_info(){
+                window.localStorage.clear();
+                var txtFile = new XMLHttpRequest();
+                var allText = "";
+                txtFile.open("GET", 'stock_info.txt', true);
+                txtFile.onreadystatechange = function () {
+                    if (txtFile.readyState === XMLHttpRequest.DONE && txtFile.status == 200) {
+                        allText = txtFile.responseText;
+                        allText = allText.split(/(?:\n|:)+/);
+                    }
+                    var table = document.getElementById("stocktable");
+                    var idx = 0;
+                    var i,k = 0;
+                    for (i = 0; i < allText.length; i+=3) {
+                        addStock(k, allText[i], allText[i+1], allText[i+2]);
+                        k++;
+                    }                  
+                };
+                
+                txtFile.send(null);
+            }
+
         </script>
     </body>
 </html>
