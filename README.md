@@ -29,14 +29,16 @@ $ pip3 install tqdm
 ```bash
 $ git clone https://github.com/LeeBohyun/OSS_team19_project.git
 ```
-
-2. Open a powershell prompt in the directory where your source code is. Then run the python file main.py.
-
+2. Unzip the file to the directory.
+```bash
+$ unzip OSS_team19_project.zip
+```
+3. Open a powershell prompt in the directory where your source code is. Then run the python file main.py.
 ```bash
 $ python3 main.py
 ```
 
-3. Open file index.html in public directory, or just load 127.0.0.1:3000/ in your chrome. Either way, it will show you the main page of the application.
+4. Open file index.html in public directory, or just load 127.0.0.1:3000/ in your chrome. Either way, it will show you the main page of the application.
 
 ![image](https://user-images.githubusercontent.com/55489991/143690402-d60f2d5e-3f64-4136-a18a-c900c5798eec.png)
 
