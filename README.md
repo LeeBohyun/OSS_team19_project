@@ -9,6 +9,10 @@
 
 Interest in the stock trading AI bot is increasing. Many researchers are developing innovatory Ai algorithms, but it is not easy for a normal person to understand. Using these algorithms to implement an AI bot is even harder. So many people spend their time and money learning how to implement AI bots which work as they want. So, we plan to implement a stock trading AI bot with a user-friendly web interface in which the users can customize the functions, such as alarms and prediction algorithm hyper-parameters so that they can make the AI bots work as they want.
 
+## Demo video
+
+https://youtu.be/YyFoQC3If1U
+
 ## Prerequisites
 
 -   In window OS, you have to install python 3.8 and pip3.
@@ -29,13 +33,17 @@ $ pip3 install tqdm
 ```bash
 $ git clone https://github.com/LeeBohyun/OSS_team19_project.git
 ```
+
 2. Unzip the file to the directory.
+
 ```bash
 $ unzip OSS_team19_project.zip
 ```
+
 3. Download zip file from link[https://drive.google.com/file/d/1132Rgdvj8MZzejLxxFZ5DfiC0pIS0Dlp/view?usp=sharing] and unzip the file in the same directory.
 
 4. Open a powershell prompt in the directory where your source code is. Then run the python file main.py.
+
 ```bash
 $ python3 main.py
 ```
