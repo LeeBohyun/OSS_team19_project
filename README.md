@@ -54,6 +54,10 @@ $ python3 main.py
 
 You can fork our repository and create pull request. Drafts are provided in our repository.
 
+## Future
+
+Currently, there is a bug in which the server stops when trying to search outside index.html. If anyone can solve it, I would appreciate it if you could help me.
+
 ## License
 
 [MIT](https://github.com/LeeBohyun/OSS_team19_project/blob/main/LICENSE)
