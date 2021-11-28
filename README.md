@@ -33,7 +33,9 @@ $ git clone https://github.com/LeeBohyun/OSS_team19_project.git
 ```bash
 $ unzip OSS_team19_project.zip
 ```
-3. Open a powershell prompt in the directory where your source code is. Then run the python file main.py.
+3. Download zip file from link[https://drive.google.com/file/d/1132Rgdvj8MZzejLxxFZ5DfiC0pIS0Dlp/view?usp=sharing] and unzip the file in the same directory.
+
+4. Open a powershell prompt in the directory where your source code is. Then run the python file main.py.
 ```bash
 $ python3 main.py
 ```
