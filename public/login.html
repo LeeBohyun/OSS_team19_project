@@ -133,7 +133,7 @@
                     LOGIN
                 </h1>
             </div>
-            <form id="login_box" method="post" action="/process/login">
+            <form id="login_box" method="post">
                 <div class="box row">
                     <label for="inputID" class="col-sm-2 col-form-label"
                         >ID</label
@@ -197,8 +197,11 @@
                 const id = id_element.value;
                 const password = password_element.value;
 
-                if (!id.length || !password.length) console.log("err");
-                else console.log(id, password);
+                if (!id.length) {
+                    alert("Please enter the ID");
+                    form.id.focus();
+                } else if (!password.length) alert("Please enter the Password");
+                else window.location = "/index.html";
             });
         </script>
     </body>
