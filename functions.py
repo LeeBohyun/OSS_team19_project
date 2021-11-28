@@ -11,7 +11,7 @@ from sklearn.linear_model import LogisticRegression
 
 class x_y:
     def __init__(self,days):
-        with open('stock_list_small.pickle','rb') as f:
+        with open('stock_list.pickle','rb') as f:
             stock_list = pickle.load(f)
         pass_fail = []
         for stock in stock_list:
@@ -194,7 +194,7 @@ samples= [
 
 # main codes
 
-with open('stock_list_small.pickle', 'rb') as f:
+with open('stock_list.pickle', 'rb') as f:
     stock_list = pickle.load(f)
 a, b = sorting3(stock_list, 15, int(sys.argv[1]), float(sys.argv[2]), float(sys.argv[3]))
 with open('public/stock_info.txt','w',encoding='utf-8') as f:
