@@ -42,5 +42,5 @@ for c in tqdm(codes):
     else:
         # print(c, 'fail')
         pass
-with open('stock_list.pickle','wb') as f:
+with open('stock_list_small.pickle','wb') as f:
     pickle.dump(stock_list,f)
