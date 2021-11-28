@@ -11,7 +11,7 @@ from sklearn.linear_model import LogisticRegression
 
 class x_y:
     def __init__(self,days):
-        with open('stock_list.pickle','rb') as f:
+        with open('stock_list_small.pickle','rb') as f:
             stock_list = pickle.load(f)
         pass_fail = []
         for stock in stock_list:
@@ -78,7 +78,7 @@ class stock_bot_final:
             else:
                 wrong+=1
         print(right,wrong)
-        with open('model_accuracy.txt','w',encoding='utf-8') as f:
+        with open('public/model_accuracy.txt','w',encoding='utf-8') as f:
             f.write(str(right)+':'+str(wrong))
 
 class stock:
@@ -197,7 +197,7 @@ samples= [
 with open('stock_list.pickle', 'rb') as f:
     stock_list = pickle.load(f)
 a, b = sorting3(stock_list, 15, int(sys.argv[1]), float(sys.argv[2]), float(sys.argv[3]))
-with open('stock_info.txt','w',encoding='utf-8') as f:
+with open('public/stock_info.txt','w',encoding='utf-8') as f:
     for idx in range(15):
         print(samples[idx][1],'Prob : ',a[idx], ' Price : ',b[idx])
         f.write(samples[idx][1]+':'+str(b[idx])+':'+'%.2f\n'%(a[idx]*100))

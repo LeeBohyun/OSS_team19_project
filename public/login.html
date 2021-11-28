@@ -70,8 +70,8 @@
                                 id="menu"
                             >
                                 <li>
-                                    <a class="dropdown-item" href="./cart.html"
-                                        >Cart</a
+                                    <a class="dropdown-item" href="./login.html"
+                                        >Login</a
                                     >
                                 </li>
                                 <li>
@@ -82,8 +82,8 @@
                                     >
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="./login.html"
-                                        >Login</a
+                                    <a class="dropdown-item" href="./cart.html"
+                                        >Cart</a
                                     >
                                 </li>
                                 <li>
@@ -133,7 +133,7 @@
                     LOGIN
                 </h1>
             </div>
-            <div id="login_box">
+            <form id="login_box" method="post" action="/process/login">
                 <div class="box row">
                     <label for="inputID" class="col-sm-2 col-form-label"
                         >ID</label
@@ -143,6 +143,7 @@
                             type="ID"
                             class="form-control"
                             id="inputID"
+                            name="id"
                             placeholder="input ID"
                         />
                     </div>
@@ -156,6 +157,7 @@
                             type="password"
                             class="form-control"
                             id="inputPassword"
+                            name="password"
                             placeholder="input password"
                         />
                     </div>
@@ -176,9 +178,9 @@
                         ><span>click <b>here</b> to create an account</span>
                     </a>
                 </div>
-            </div>
+            </form>
         </div>
-        `
+
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"

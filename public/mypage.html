@@ -71,8 +71,8 @@
                                 id="menu"
                             >
                                 <li>
-                                    <a class="dropdown-item" href="./cart.html"
-                                        >Cart</a
+                                    <a class="dropdown-item" href="./login.html"
+                                        >Login</a
                                     >
                                 </li>
                                 <li>
@@ -83,8 +83,8 @@
                                     >
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="./login.html"
-                                        >Login</a
+                                    <a class="dropdown-item" href="./cart.html"
+                                        >Cart</a
                                     >
                                 </li>
                                 <li>
@@ -137,7 +137,7 @@
                     MY PAGE
                 </h1>
             </div>
-            <div class="box container-sm">
+            <div class="box">
                 <table
                     class="
                         accuracytable
@@ -145,44 +145,61 @@
                         border border-dark
                     "
                 >
-                    <tr class="table-dark">
-                        <th>AI TradeBot Model Accuracy</th>
+                    <tr class="table-dark" id="stock_accuracy">
+                        <th>
+                            <button
+                                id="accuracy_button"
+                                type="button"
+                                class="btn btn-secondary rounded-0"
+                                onclick="load_accuracy()"
+                            >
+                                AI TradeBot Model Accuracy
+                            </button>
+                        </th>
                     </tr>
                     <tr>
-                        <td id="accuray">70%</td>
+                        <td id="accuracy_result"></td>
                     </tr>
                 </table>
-
-                <table
-                    class="mystocktable table table-bordered border border-dark"
-                >
-                    <thead>
-                        <tr class="table-dark">
-                            <th>Stock</th>
-                            <th>
-                                Current Price(\)
-                                <button
-                                    class="sort btn-dark"
-                                    onclick='sortTable("price")'
-                                >
-                                    <i class="bi bi-arrow-down-up"></i>
-                                </button>
-                            </th>
-                            <th>
-                                Success Rate(%)
-                                <button
-                                    class="sort btn-dark"
-                                    onclick='sortTable("pb")'
-                                >
-                                    <i class="bi bi-arrow-down-up"></i>
-                                </button>
-                            </th>
-                            <th>Sell</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tablebody"></tbody>
-                </table>
             </div>
+            <div class="mb-3">
+                <button
+                    id="loadbutton"
+                    type="button"
+                    class="btn btn-secondary rounded-0"
+                    onclick="load_purchase()"
+                >
+                    Load Purchases
+                </button>
+            </div>
+
+            <table class="mystocktable table table-bordered border border-dark">
+                <thead>
+                    <tr class="table-dark">
+                        <th>Stock</th>
+                        <th>
+                            Current Price(\)
+                            <button
+                                class="sort btn-dark"
+                                onclick='sortTable("price")'
+                            >
+                                <i class="bi bi-arrow-down-up"></i>
+                            </button>
+                        </th>
+                        <th>
+                            Success Rate(%)
+                            <button
+                                class="sort btn-dark"
+                                onclick='sortTable("pb")'
+                            >
+                                <i class="bi bi-arrow-down-up"></i>
+                            </button>
+                        </th>
+                        <th>Sell</th>
+                    </tr>
+                </thead>
+                <tbody id="tablebody"></tbody>
+            </table>
         </div>
 
         <!-- Option 1: Bootstrap Bundle with Popper -->
@@ -235,6 +252,7 @@
 
                 //purchase 버튼 클릭했을 때 작동
                 purchase_btn.addEventListener("click", () => {
+                    alert("Stock Removed!");
                     tr.remove();
                     console.log(
                         name_td.textContent,
@@ -249,11 +267,54 @@
             }
 
             //테스트
-            window.addEventListener("load", () => {
-                addStock("11111", "삼성전자", "90000", "199");
-                addStock("22222", "카카오", "10000", "90");
-                addStock("33333", "네이버", "70009", "5555");
-            });
+            function load_purchase() {
+                if (window.localStorage.length == 0) {
+                    return;
+                } else {
+                    for (var k = 0; k < 15; k++) {
+                        var str = window.localStorage.getItem(k);
+                        if (str != null) {
+                            str = str.split(":");
+                            addStock(k, str[0], str[1], str[2]);
+                        } else {
+                            continue;
+                        }
+                    }
+                }
+            }
+
+            function load_accuracy() {
+                var txtFile = new XMLHttpRequest();
+                var allText = "";
+                txtFile.onreadystatechange = function () {
+                    if (
+                        txtFile.readyState === XMLHttpRequest.DONE &&
+                        txtFile.status == 200
+                    ) {
+                        allText = txtFile.responseText;
+                        allText = allText.split(":");
+                    }
+                    var total = Number(allText[0]) + Number(allText[1]);
+                    var success = Number(allText[0]);
+                    var success_rate = success / total;
+                    document.getElementById("accuracy_result").innerHTML =
+                        success_rate;
+                };
+                txtFile.open("GET", "model_accuracy.txt", true);
+                txtFile.send(null);
+            }
+
+            function allStorage() {
+                var values = [],
+                    keys = Object.keys(localStorage),
+                    i = keys.length;
+
+                while (i--) {
+                    values.push(localStorage.getItem(keys[i]));
+                }
+
+                return values;
+            }
         </script>
     </body>
 </html>

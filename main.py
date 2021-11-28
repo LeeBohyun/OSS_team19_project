@@ -1,5 +1,6 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer # python3
 import os
+from os.path import join
 import subprocess
 from glob import glob
 '''from flask import Flask
@@ -18,15 +19,18 @@ class HandleRequests(BaseHTTPRequestHandler):
     
     def do_GET(self):
         try:
-            print(self.path)
+            print(1,self.path)
             if self.path == "/":
                 self.path="/index.html"
             if self.path == "/cart.html":
                 fucntions = "functions.py"
+                print("cart")
                 subprocess.call(['python', os.getcwd()+"/"+fucntions,str(dp),str(minrng),str(maxrng)])
+            if '?' in self.path:
+                self.path=self.path.replace('?','')
+            filepath = join(join(os.getcwd(),'public'),self.path[1:])
             
-            filepath = os.getcwd()+self.path
-            print(filepath)
+            print(2,filepath)
             f = open(filepath,"rb")
         except IOError:
             self.send_error(404,'File Not Found: %s ' % filepath)
@@ -70,7 +74,7 @@ class HandleRequests(BaseHTTPRequestHandler):
 
         if self.path == "/":
             self.path="/index.html"
-        fname = os.getcwd()+self.path
+        fname = join(join(os.getcwd(),'public'),self.path[1:])
         with open(fname,"rb") as f:
             fout = f.read(os.path.getsize(fname))
             self.wfile.write(fout)
@@ -79,5 +83,5 @@ class HandleRequests(BaseHTTPRequestHandler):
         self.do_POST()
 
 host = ''
-port = 8080
+port = 3000
 HTTPServer((host, port), HandleRequests).serve_forever()
