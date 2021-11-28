@@ -50,6 +50,23 @@ $ python3 main.py
 2. Cart: In settings page`(main page-> menu -> cart)`, we have a shopping cart that users can put stocks in and compare them. It sorts their rank based on the probability of success. Users can use this information to invest more effectively.
 3. AI prediction & recommendation: In mypage`(main page-> menu -> mypage)`, in order to predict the expected benefit and loss, we use machine learning algorithms and display the results to the use in that page. It also displays the stocks that user purchased.
 
+## List of stocks that can be searched
+1. KR모터스
+2. 경방
+3. 메리츠화재
+4. 삼양홀딩스
+5. 삼양홀딩스우
+6. 하이트진로
+7. 하이트진로2우B
+8. 유한양행
+9. 유한양행우
+10. CJ대한통운
+11. 하이트진로홀딩스
+12. 하이트진로홀딩스우
+13. 두산
+14. 두산우
+15. 두산2우B
+
 ## How to extend our work
 
 You can fork our repository and create pull request. Drafts are provided in our repository.
