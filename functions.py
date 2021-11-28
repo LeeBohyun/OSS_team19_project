@@ -194,7 +194,7 @@ samples= [
 
 # main codes
 
-with open('stock_list.pickle', 'rb') as f:
+with open('stock_list_small.pickle', 'rb') as f:
     stock_list = pickle.load(f)
 a, b = sorting3(stock_list, 15, int(sys.argv[1]), float(sys.argv[2]), float(sys.argv[3]))
 with open('public/stock_info.txt','w',encoding='utf-8') as f:
