@@ -134,7 +134,7 @@
                     SIGN UP
                 </h1>
             </div>
-            <form id="signup_box" method="post" >
+            <form id="signup_box" method="post">
                 <div class="box mb-3 row">
                     <label for="inputID" class="col-sm-2 col-form-label"
                         >ID</label
@@ -197,8 +197,14 @@
                         type="submit"
                         class="btn btn-secondary col-sm-2"
                     >
-                        <a href="index.html" style="text-decoration: none; color: white;">Submit</a>
+                        Submit
                     </button>
+                </div>
+                <div class="box m-3 row pb-3">
+                    Already have account?
+                    <a id="loginlink" href="login.html" class="link-dark"
+                        ><b>Login</b>
+                    </a>
                 </div>
             </form>
         </div>
@@ -229,8 +235,10 @@
                     !name.length ||
                     !email.length
                 )
-                    console.log("err");
-                else console.log(id, password, name, email);
+                    alert("Please enter all the information");
+                else {
+                    alert("Success to register! Please login.");
+                }
             });
         </script>
     </body>
