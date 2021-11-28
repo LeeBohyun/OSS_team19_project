@@ -146,13 +146,16 @@
                     "
                 >
                     <tr class="table-dark" id="stock_accuracy">
-                        <th><button
-                            id="accuracy_button"
-                            type="button"
-                            class="btn btn-secondary rounded-0"
-                            onclick="load_accuracy()"
-                        >AI TradeBot Model Accuracy     
-                        </button></th>
+                        <th>
+                            <button
+                                id="accuracy_button"
+                                type="button"
+                                class="btn btn-secondary rounded-0"
+                                onclick="load_accuracy()"
+                            >
+                                AI TradeBot Model Accuracy
+                            </button>
+                        </th>
                     </tr>
                     <tr>
                         <td id="accuracy_result"></td>
@@ -249,7 +252,7 @@
 
                 //purchase 버튼 클릭했을 때 작동
                 purchase_btn.addEventListener("click", () => {
-                    alert("Stock Removed!")
+                    alert("Stock Removed!");
                     tr.remove();
                     console.log(
                         name_td.textContent,
@@ -264,49 +267,50 @@
             }
 
             //테스트
-            function load_purchase(){
-
-                if(window.localStorage.length==0){
+            function load_purchase() {
+                if (window.localStorage.length == 0) {
                     return;
-                }else{
-                    for (var k=0; k<15; k++){                       
-                        var str =window.localStorage.getItem(k);
-                        if(str!=null){                          
-                            str = str.split(':');
+                } else {
+                    for (var k = 0; k < 15; k++) {
+                        var str = window.localStorage.getItem(k);
+                        if (str != null) {
+                            str = str.split(":");
                             addStock(k, str[0], str[1], str[2]);
-                        }else{
+                        } else {
                             continue;
                         }
                     }
                 }
             }
 
-            function load_accuracy(){
-
-            var txtFile = new XMLHttpRequest();
-            var allText = "";
-            txtFile.onreadystatechange = function () {
-                if (txtFile.readyState === XMLHttpRequest.DONE && txtFile.status == 200) {
-                    allText = txtFile.responseText;
-                    allText = allText.split(":");
-                }
-                var total = Number(allText[0])+Number(allText[1]);
-                var success = Number((allText[0]));
-                var success_rate = success/total;
-                document.getElementById('accuracy_result').innerHTML=success_rate_0.13;
-            }
-            txtFile.open("GET", 'model_accuracy.txt', true);
-            txtFile.send(null);
+            function load_accuracy() {
+                var txtFile = new XMLHttpRequest();
+                var allText = "";
+                txtFile.onreadystatechange = function () {
+                    if (
+                        txtFile.readyState === XMLHttpRequest.DONE &&
+                        txtFile.status == 200
+                    ) {
+                        allText = txtFile.responseText;
+                        allText = allText.split(":");
+                    }
+                    var total = Number(allText[0]) + Number(allText[1]);
+                    var success = Number(allText[0]);
+                    var success_rate = success / total;
+                    document.getElementById("accuracy_result").innerHTML =
+                        success_rate;
+                };
+                txtFile.open("GET", "model_accuracy.txt", true);
+                txtFile.send(null);
             }
 
             function allStorage() {
-
                 var values = [],
                     keys = Object.keys(localStorage),
                     i = keys.length;
 
-                while ( i-- ) {
-                    values.push( localStorage.getItem(keys[i]));
+                while (i--) {
+                    values.push(localStorage.getItem(keys[i]));
                 }
 
                 return values;

@@ -214,7 +214,7 @@
                 purchase_btn.type = "submit";
                 purchase_btn.className = "tablebtn btn btn-secondary rounded-0";
                 purchase_btn.textContent = "Purchase";
-                purchase_btn.id="purchase_btn";
+                purchase_btn.id = "purchase_btn";
 
                 purchase_td.appendChild(purchase_btn);
 
@@ -222,40 +222,53 @@
                 tr.appendChild(price_td);
                 tr.appendChild(pb_td);
                 tr.appendChild(purchase_td);
+
+                const recommendation =
+                    window.localStorage.getItem("recommendation");
+
+                if (parseFloat(possibility) >= parseFloat(recommendation)) {
+                    pb_td.style.color = "crimson";
+                }
                 //purchase 버튼 클릭했을 때 작동
                 purchase_btn.addEventListener("click", () => {
                     alert("Stock Successfully Purchased!");
-                    let str = name_td.textContent.concat(":", price_td.textContent, ":", pb_td.textContent);
+                    let str = name_td.textContent.concat(
+                        ":",
+                        price_td.textContent,
+                        ":",
+                        pb_td.textContent
+                    );
                     window.localStorage.setItem(id, str);
-
                 });
 
                 let tablebody = document.querySelector("#tablebody");
                 tablebody.appendChild(tr);
             }
 
-            function load_stock_info(){
-                window.localStorage.clear();
+            function load_stock_info() {
                 var txtFile = new XMLHttpRequest();
                 var allText = "";
-                txtFile.open("GET", 'stock_info.txt', true);
+                txtFile.open("GET", "stock_info.txt", true);
                 txtFile.onreadystatechange = function () {
-                    if (txtFile.readyState === XMLHttpRequest.DONE && txtFile.status == 200) {
+                    if (
+                        txtFile.readyState === XMLHttpRequest.DONE &&
+                        txtFile.status == 200
+                    ) {
                         allText = txtFile.responseText;
                         allText = allText.split(/(?:\n|:)+/);
                     }
                     var table = document.getElementById("stocktable");
                     var idx = 0;
-                    var i,k = 0;
-                    for (i = 0; i < allText.length; i+=3) {
-                        addStock(k, allText[i], allText[i+1], allText[i+2]);
+                    var i,
+                        k = 0;
+                    for (i = 0; i < allText.length; i += 3) {
+                        addStock(k, allText[i], allText[i + 1], allText[i + 2]);
                         k++;
-                    }                  
+                    }
                 };
-                
+
                 txtFile.send(null);
             }
-
         </script>
     </body>
 </html>

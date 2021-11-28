@@ -144,7 +144,7 @@
                         <input
                             class="form-control"
                             id="param1"
-                            placeholder="input param1"
+                            placeholder="ex) 20"
                         />
                     </div>
                 </div>
@@ -156,7 +156,7 @@
                         <input
                             class="form-control"
                             id="param2"
-                            placeholder="input param2"
+                            placeholder="range: 0~1 ex) 0.1"
                         />
                     </div>
                 </div>
@@ -168,7 +168,27 @@
                         <input
                             class="form-control"
                             id="param3"
-                            placeholder="input param3"
+                            placeholder="range: 0~1 ex) 0.5"
+                        />
+                    </div>
+                </div>
+                <div class="box">
+                    <h1
+                        class="py-2 mb-3"
+                        style="width: 720px; font-weight: bold"
+                    >
+                        Alarm
+                    </h1>
+                </div>
+                <div class="box mb-5 row">
+                    <label for="recommendation" class="col-sm-2 col-form-label"
+                        >Recommendation</label
+                    >
+                    <div class="col-sm-3">
+                        <input
+                            class="form-control"
+                            id="recommendation"
+                            placeholder="range: 0~100 ex) 50"
                         />
                     </div>
                 </div>
@@ -176,7 +196,7 @@
                     <button
                         id="settingbtn"
                         type="submit"
-                        class="btn btn-secondary col-sm-2"                        
+                        class="btn btn-secondary col-sm-2"
                     >
                         Apply
                     </button>
@@ -197,11 +217,18 @@
                 let p1 = document.querySelector("#param1");
                 let p2 = document.querySelector("#param2");
                 let p3 = document.querySelector("#param3");
+                let recommendation = document.querySelector("#recommendation");
 
                 const pv1 = p1.value;
                 const pv2 = p2.value;
                 const pv3 = p3.value;
-                console.log(pv1, pv2, pv3);
+                const re = recommendation.value;
+                if (re >= 100)
+                    window.localStorage.setItem("recommendation", 100);
+                else if (re < 0)
+                    window.localStorage.setItem("recommendation", 200);
+                else window.localStorage.setItem("recommendation", re);
+                console.log(window.localStorage.getItem("recommendation"));
             });
         </script>
     </body>
