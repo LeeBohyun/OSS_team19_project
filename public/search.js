@@ -7,6 +7,7 @@ document.getElementById("searchform").onsubmit = function () {
         return false;
     } else {
         console.log(search_value);
+        window.localStorage.setItem("search", search_value);
         return true;
     }
 };

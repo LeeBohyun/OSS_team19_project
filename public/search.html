@@ -130,7 +130,7 @@
         </nav>
 
         <div class="wrapper">
-            <div class="stockinfo mx-auto">
+            <div id="stockinfo" class="mx-auto">
                 <div class="d-flex border-bottom border-dark pb-2">
                     <h3 id="stockname" class="mb-0">종목명</h3>
                     <span id="stockid" class="mt-1">11111</span>
@@ -144,9 +144,10 @@
                         >70
                     </span>
                     <button
-                        type="submit"
+                        type="button"
                         id="addcart"
                         class="btn btn-dark ms-5 btn-sm"
+                        onclick="toCart()"
                     >
                         + cart
                     </button>
@@ -208,48 +209,55 @@
 
         <script>
             window.addEventListener("load", () => {
-                let info = [
-                    false,
-                    "카카오",
-                    "035720",
-                    "70",
-                    "128000",
-                    "3500",
-                    "2.81",
-                    "124500",
-                    "128500",
-                    "2882968",
-                    "125000",
-                    "124500",
-                    "366216",
-                ];
-                setStockTable(info);
+                let stocklist1 = [];
+                let key = window.localStorage.getItem("search");
+
+                if (key.length > 0) {
+                    const r = load_stock_info1(key);
+                    if (r !== -1) load_stock_info2(key);
+                }
             });
-            function setStockTable(info) {
+
+            function removet() {
+                let stock = document.querySelector("#stockinfo");
+                stock.remove();
+            }
+
+            function setStockTable1(info) {
+                console.log(info);
                 let idx = 0;
 
-                const increase = info[idx++];
                 let stockname = document.querySelector("#stockname");
-                let stockid = document.querySelector("#stockid");
                 let stockAccuracy = document.querySelector("#stockAccuracy");
+                let stockprice = document.querySelector("#stockprice");
+
+                stockname.textContent = info[idx++];
+                stockprice.textContent = info[idx++];
+                stockAccuracy.textContent = info[idx++];
+            }
+            function setStockTable2(info) {
+                let idx = 0;
+
+                let stockid = document.querySelector("#stockid");
                 let stockprice = document.querySelector("#stockprice");
                 let comparePrice = document.querySelector("#comparePrice");
                 let fluctuation = document.querySelector("#fluctuation");
-
-                stockname.textContent = info[idx++];
+                const increase = info[idx++];
                 stockid.textContent = info[idx++];
-                stockAccuracy.textContent = info[idx++];
-                stockprice.textContent = info[idx++];
 
-                if (increase) {
+                if (increase === "1") {
                     comparePrice.textContent = "+ " + info[idx++];
                 } else {
                     comparePrice.textContent = "- " + info[idx++];
                 }
 
-                fluctuation.textContent = "( " + info[idx++] + " )";
+                if (increase === "1") {
+                    fluctuation.textContent = "( +" + info[idx++] + "% )";
+                } else {
+                    fluctuation.textContent = "( -" + info[idx++] + "% )";
+                }
 
-                let c = increase ? "crimson" : "mediumblue";
+                let c = increase === "1" ? "crimson" : "mediumblue";
                 stockprice.style.color = c;
                 comparePrice.style.color = c;
                 fluctuation.style.color = c;
@@ -263,6 +271,96 @@
                         span[j * 2 + 1].textContent = info[idx++];
                     }
                 }
+            }
+
+            function load_stock_info1(key) {
+                var txtFile = new XMLHttpRequest();
+                var allText = "";
+                txtFile.open("GET", "stock_info.txt", true);
+                txtFile.onreadystatechange = function () {
+                    if (
+                        txtFile.readyState === XMLHttpRequest.DONE &&
+                        txtFile.status == 200
+                    ) {
+                        allText = txtFile.responseText;
+                        allText = allText.split(/(?:\n|:)+/);
+                    }
+                    if (allText !== "") {
+                        console.log(key);
+                        console.log(allText);
+                        var i;
+                        let fill = 0;
+                        for (i = 0; i < allText.length; i += 3) {
+                            if (allText[i] === key) {
+                                fill = 1;
+                                setStockTable1([
+                                    allText[i],
+                                    allText[i + 1],
+                                    allText[i + 2],
+                                ]);
+                                break;
+                            }
+                        }
+                        if (fill == 0) {
+                            removet();
+                            return -1;
+                        }
+                    }
+                };
+
+                txtFile.send(null);
+            }
+
+            function load_stock_info2(key) {
+                let list1 = [];
+                var txtFile = new XMLHttpRequest();
+                var allText = "";
+                txtFile.open("GET", "stock_list.txt", true);
+                txtFile.onreadystatechange = function () {
+                    if (
+                        txtFile.readyState === XMLHttpRequest.DONE &&
+                        txtFile.status == 200
+                    ) {
+                        allText = txtFile.responseText;
+                        allText = allText.split(/(?:\n|:)+/);
+                    }
+                    if (allText !== "") {
+                        var i;
+                        let fill = 0;
+                        for (i = 0; i < allText.length; i += 11) {
+                            if (allText[i] === key) {
+                                fill = 1;
+                                list1.push(allText[i + 1]);
+                                list1.push(allText[i + 2]);
+                                list1.push(allText[i + 3]);
+                                list1.push(allText[i + 4]);
+                                list1.push(allText[i + 5]);
+                                list1.push(allText[i + 6]);
+                                list1.push(allText[i + 7]);
+                                list1.push(allText[i + 8]);
+                                list1.push(allText[i + 9]);
+                                list1.push(allText[i + 10]);
+                                setStockTable2(list1);
+                            }
+                        }
+                    }
+                };
+
+                txtFile.send(null);
+            }
+
+            function toCart() {
+                let mycart = window.localStorage.getItem("mycart");
+                mycart = JSON.parse(mycart);
+                console.log(mycart);
+                if (mycart === null) mycart = [];
+                let stockname = document.querySelector("#stockname");
+                let s = stockname.textContent;
+
+                let ok = true;
+                if (!mycart.includes(s)) mycart.push(s);
+                console.log(mycart);
+                window.localStorage.setItem("mycart", JSON.stringify(mycart));
             }
         </script>
     </body>
