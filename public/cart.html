@@ -245,6 +245,7 @@
                 tablebody.appendChild(tr);
             }
 
+            let loaded = 0;
             function load_stock_info() {
                 let mycart = window.localStorage.getItem("mycart");
                 mycart = JSON.parse(mycart);
@@ -260,19 +261,22 @@
                         allText = txtFile.responseText;
                         allText = allText.split(/(?:\n|:)+/);
                     }
-                    var table = document.getElementById("stocktable");
-                    var idx = 0;
-                    var i,
-                        k = 0;
-                    for (i = 0; i < allText.length; i += 3) {
-                        if (mycart.includes(allText[i]))
-                            addStock(
-                                k,
-                                allText[i],
-                                allText[i + 1],
-                                allText[i + 2]
-                            );
-                        k++;
+                    if (allText !== "" && loaded === 0) {
+                        var table = document.getElementById("stocktable");
+                        var idx = 0;
+                        var i,
+                            k = 0;
+                        for (i = 0; i < allText.length; i += 3) {
+                            if (mycart.includes(allText[i]))
+                                addStock(
+                                    k,
+                                    allText[i],
+                                    allText[i + 1],
+                                    allText[i + 2]
+                                );
+                            k++;
+                        }
+                        loaded = 1;
                     }
                 };
 

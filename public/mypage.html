@@ -267,8 +267,10 @@
             }
 
             //테스트
+
+            let loaded = 0;
             function load_purchase() {
-                if (window.localStorage.length == 0) {
+                if (window.localStorage.length == 0 || loaded === 1) {
                     return;
                 } else {
                     for (var k = 0; k < 15; k++) {
@@ -280,6 +282,7 @@
                             continue;
                         }
                     }
+                    loaded = 1;
                 }
             }
 
